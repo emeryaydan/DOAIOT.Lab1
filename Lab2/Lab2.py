@@ -18,12 +18,18 @@ def find_min_max(num_list):
     return [min(num_list), max(num_list)]
 
 def sort_temperature(num_list):
-    print("sort_temperature")
-    return []
+    return sorted(num_list)
 
 def calc_median_temperature(num_list):
-    print("calc_median_temperature")
-    return 0.0
+    sorted_list = sort_temperature(num_list)
+    list_length = len(sorted_list)
+    if list_length % 2 == 0:
+        middle1 = sorted_list[list_length // 2 - 1]
+        middle2 = sorted_list[list_length // 2]
+        median = (middle1 + middle2) / 2
+    else:
+        median = sorted_list[list_length // 2]
+    return median
 
 def main():
     print("ET0735 (DevOps for AIoT) - Lab 2 - Introduction to Python")
@@ -33,10 +39,12 @@ def main():
     
     average = calc_average(num_list)
     min_max = find_min_max(num_list)
+    median = calc_median_temperature(num_list)
     
     print(f"Average temperature: {average:.2f}")
     print(f"Minimum temperature: {min_max[0]:.2f}")
     print(f"Maximum temperature: {min_max[1]:.2f}")
+    print(f"Median temperature: {median:.2f}")
 
 if __name__ == "__main__":
     main()
